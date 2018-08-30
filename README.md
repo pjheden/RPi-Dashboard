@@ -1,4 +1,4 @@
-# Dash Dashboard
+# Dashboard
 
 ## Install and Run
 * Activate virtual environment
