@@ -1,4 +1,4 @@
-# Dash Dashboard
+# Dashboard
 
 ## Install and Run
 * Activate virtual environment
@@ -13,4 +13,4 @@
 * Happiness: 8081
 
 ## TODO:
-* Add backend for happiness
+* Add styling for happiness
