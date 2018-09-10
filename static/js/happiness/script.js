@@ -1,19 +1,19 @@
-function addFaceHTML() {
-  return '<img id="emojiImg" src="../static/data/happiness/Neutral_Face_Emoji.png"></img>';
+function happiness_addFaceHTML() {
+  return '<img id="emojiImg" class = "happiness-img" src="../static/data/happiness/Neutral_Face_Emoji.png"></img>';
 }
 
-function addTextHTML() {
+function happiness_addTextHTML() {
   return '<p>Hur glad är du idag?</p>'
 }
 
-function addScaleHTML() {
+function happiness_addScaleHTML() {
   htmlScale = '<div id="slider"> \
                 <div id="custom-handle" class="ui-slider-handle"></div>\
               </div>';
   return htmlScale
 }
 
-function addScaleJS() {
+function happiness_addScaleJS() {
   var handle = $( "#custom-handle" );
   $( "#slider" ).slider({
       range: "max",
@@ -25,34 +25,34 @@ function addScaleJS() {
       },
       slide: function( event, ui ) {
         handle.text( ui.value );
-        resetTimeout();
-        updateEmoji();
+        happiness_resetTimeout();
+        happiness_updateEmoji();
       }
     });
 }
 
-function InitializeHTMLComponents(parentDiv) {
-  var faceEl = addFaceHTML();
-  var textEl = addTextHTML();
-  var scaleEl = addScaleHTML();
+function happiness_initializeHTMLComponents(parentDiv) {
+  var faceEl = happiness_addFaceHTML();
+  var textEl = happiness_addTextHTML();
+  var scaleEl = happiness_addScaleHTML();
 
   parentDiv.append(faceEl + textEl + scaleEl);
 }
 
-function InitializeJSComponents() {
-  addScaleJS();
+function happiness_initializeJSComponents() {
+  happiness_addScaleJS();
 }
 
-function resetTimeout(){
+function happiness_resetTimeout(){
   if (SAVE_TIMEOUT) {
     clearTimeout(SAVE_TIMEOUT);
   }
   SAVE_TIMEOUT = setTimeout(function(){
-    saveScore();
+    happiness_saveScore();
   }, SAVE_DELAY);
 }
 
-function saveScore() {
+function happiness_saveScore() {
   var val = $( "#slider" ).slider("value");
 
   var promise = Promise.resolve(
@@ -70,7 +70,7 @@ function saveScore() {
   });
 }
 
-function updateEmoji() {
+function happiness_updateEmoji() {
   var val = $( "#slider" ).slider("value");
   // #emojiImg
   var emojiUrl = "../static/data/happiness/"
@@ -110,7 +110,7 @@ $(function(){
 
   if (parentDiv) {
     // Initialize html components
-    InitializeHTMLComponents(parentDiv);
-    InitializeJSComponents();
+    happiness_initializeHTMLComponents(parentDiv);
+    happiness_initializeJSComponents();
   }
 });
